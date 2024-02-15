@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fullPage</title>
+    <link rel="stylesheet" href="./jquery.fullPage.css">
+    <style>
+        .wrap {}
+        .wrap h1 {width: 100px;}
+        .wrap .contents{
+            height: 100vh;
+        }
+        .wrap .contents:nth-child(1){
+            background:aqua;
+        }
+        .wrap .contents:nth-child(2){
+            background: tomato;
+        }
+        .wrap .contents:nth-child(3){
+            background: violet;
+        }
+        .wrap .contents:nth-child(4){
+            background: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="contents section">
+            <div class="first">
+                <h1 id="title1">제목1</h1>
+                <p class="content1" id="content">제이쿼리는 자바스크립트 라이브러리입니다.</p>
+            </div>
+            <div class="second">
+                <h1 id="title2">제목2</h1>
+                <p class="content2" id="content">제이쿼리는 DOM 이벤트와 스타일을 자바스크립트보다 쉽게 제작할 수 있습니다</p>
+            </div>
+        </div>
+        <div class="contents section"></div>
+        <div class="contents section"></div>
+        <div class="contents section"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./jquery.fullPage.js"></script>
+    <script>
+        $('.wrap').fullpage({
+            scrollBar:true,
+        })
+        $(document).ready(function() {
+      // 해당 요소 숨기기
+            $('.content2').hide(); 
+
+            $('#title1').click(function(){
+                $('.content2').hide()
+                $('.content1').show()
+                $('#title1').css('background-color', 'red')
+                $('#title2').css('background-color', '')
+            })
+
+            $('#title2').click(function(){
+                $('.content1').hide()
+                $('.content2').show()
+                $('#title2').css('background-color', 'red')
+                $('#title1').css('background-color', '')
+            })
+
+        });
+        
+    </script>
+</body>
+</html>
